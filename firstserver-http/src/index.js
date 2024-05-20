@@ -1,12 +1,19 @@
 const http = require('http');
+const users = require('./mocks/users');
 
 const server = http.createServer((request, response)=> {
-    response.writeHead(200,{'Content-TYPE':'text/html'})
-    response.end('<h1>Olá Mundo</h1>')
+
+    console.log(`Request method: ${request.method} | Endpoint: ${request.url}`)
+
+    if(request.url === '/users' && request.method === 'GET'){
+        response.writeHead(200,{'Content-Type':'application/json'})
+        response.end(JSON.stringify(users))
+    }else{
+        response.writeHead(404,{'Content-TYPE':'text/html'})
+        response.end(`Cannot ${request.method} ${request.url}`)
+    }
 })
 
 server.listen(8080, ()=>{console.log("Server Rodando")})
 
 
-//git config --global user.email "caio.silvax@hotmail.com"
-//git config --global user.name "caiocipriano"
