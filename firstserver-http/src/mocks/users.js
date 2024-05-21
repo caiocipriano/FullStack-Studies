@@ -4,8 +4,12 @@ module.exports  = [
         name:"Caio"
     },
     {
-        id:1,
+        id:2,
         name:"Fulano"
+    },
+    {
+        id:3,
+        name:"Beltrano"
     },
 ]
   
