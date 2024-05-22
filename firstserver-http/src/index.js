@@ -12,6 +12,7 @@ const server = http.createServer((request, response)=> {
 
     if (route){
         request.query = Object.fromEntries(parseUrl.searchParams)
+        route.handler(request,response)
     }else{
         response.writeHead(404, {'Content-Type' : 'application/json'})
         response.end(`Cannot ${request.url} ${request.method}`)
