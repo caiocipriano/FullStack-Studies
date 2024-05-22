@@ -1,0 +1,14 @@
+{
+  "name": "my-contacts",
+  "version": "1.0.0",
+  "description": "API about contacts",
+  "main": "src/index.js",
+  "author": "caio",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
