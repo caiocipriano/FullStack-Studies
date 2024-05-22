@@ -1,18 +1,18 @@
 const users = require("../mocks/users")
 
 module.exports = {
-    listUsers(req, res){
+    listUsers(request, response){
         const { order}  = request.query
 
         const sortedUsers = users.sort((a,b)=>{
             if(order === 'desc'){
                 return a.id < b.id ? 1 : -1;
-            }else{
-                a.id > b.id ? 1 : -1
             }
+                return a.id > b.id ? 1 : -1
+            
         })
 
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(sortedUsers))
+        response.writeHead(200, {'Content-Type': 'application/json'})
+        response.end(JSON.stringify(sortedUsers))
     }
 }
