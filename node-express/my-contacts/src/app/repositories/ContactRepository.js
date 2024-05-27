@@ -29,6 +29,9 @@ class ContactRepository{
             resolve()
         })
     }
+    create(){
+
+    }
 }
 
 module.exports = new ContactRepository()

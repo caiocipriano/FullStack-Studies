@@ -16,7 +16,18 @@ class ContactController {
         response.json(contact)
     }
 
+    async store(request, response){
+        const {name, email,phone,contact_id} = request.body;
 
+        const emailCheck = await contactRepository.findByEmail(email)
+        if(emailCheck){
+            return response.status(404).json({error:'Email já existe'})
+        }
+        const contact = await contactRepository.create({
+            name, email,phone,contact_id})
+
+        request.json(contact)
+    }
 
     async delete(request,response){
         const {id} = request.params;
