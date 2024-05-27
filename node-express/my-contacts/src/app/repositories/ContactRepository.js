@@ -23,6 +23,12 @@ class ContactRepository{
     findById(id){
         return new Promise((resolve)=> resolve(contacts.find((contacts)=>contacts.id === id)))
     }
+    delete(id){
+        return new Promise((resolve)=>{
+            contacts = contacts.find((contacts)=>contacts.id !== id)
+            resolve()
+        })
+    }
 }
 
 module.exports = new ContactRepository()

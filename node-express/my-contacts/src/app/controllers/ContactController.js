@@ -1,3 +1,4 @@
+const ContactRepository = require('../repositories/ContactRepository');
 const contactRepository = require('../repositories/ContactRepository')
 
 class ContactController {
@@ -13,6 +14,18 @@ class ContactController {
             return response.status(404).json({error:'Não encontrrado '})
         }
         response.json(contact)
+    }
+
+
+
+    async delete(request,response){
+        const {id} = request.params;
+        const contact = await contactRepository.findById(id)
+        if(!contact){
+            return response.status(400).json({error:'Não encontrado'})
+        }
+        await ContactRepository.delete(id)
+        response.sendStatus(204)
     }
 }
 module.exports = new ContactController();
