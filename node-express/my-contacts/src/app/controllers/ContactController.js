@@ -8,7 +8,7 @@ class ContactController {
 
     async show(request, response){
         const {id} = request.params;
-        const contact = await ContactController.findById(id)
+        const contact = await contactRepository.findById(id)
         if(!contact){
             return response.status(404).json({error:'Não encontrrado '})
         }

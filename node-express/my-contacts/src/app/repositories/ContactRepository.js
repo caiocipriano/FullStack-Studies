@@ -20,7 +20,7 @@ class ContactRepository{
      findAll(){
         return new Promise((resolve, reject)=> resolve(contacts))
     }
-    findById(){
+    findById(id){
         return new Promise((resolve)=> resolve(contacts.find((contacts)=>contacts.id === id)))
     }
 }
