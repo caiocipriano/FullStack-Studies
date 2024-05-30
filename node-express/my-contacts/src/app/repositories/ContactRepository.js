@@ -25,11 +25,22 @@ class ContactRepository{
     }
     delete(id){
         return new Promise((resolve)=>{
-            contacts = contacts.find((contacts)=>contacts.id !== id)
+            contacts = contacts.filter((contact)=>contact.id !== id) //filter não funciona?
             resolve()
         })
     }
-    create(){
+    create({name, email, phone, category_id}){
+        return new Promise((resolve)=>{
+            const newContact = {
+                id: v4(),
+                name,
+                email,
+                phone,
+                category_id,
+            }
+            contacts.push(newContact)
+            resolve(newContact);
+        })
 
     }
 }
